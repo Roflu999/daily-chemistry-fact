@@ -1,29 +1,19 @@
+ ```yaml
    name: Daily Chemistry Fact
 
    on:
      schedule:
-       # 9:00 AM Dubai time = 5:00 AM UTC
        - cron: '0 5 * * *'
-     workflow_dispatch: # Allow manual trigger
+     workflow_dispatch:
 
    jobs:
      send-chemistry-fact:
        runs-on: ubuntu-latest
        steps:
-         - name: Checkout repository
-           uses: actions/checkout@v4
-
-         - name: Set up Node.js
-           uses: actions/setup-node@v4
-           with:
-             node-version: '20'
-
-         - name: Install dependencies
-           run: npm install
-
-         - name: Send chemistry fact
-           env:
-             CALLMEBOT_API_KEY: ${{ secrets.CALLMEBOT_API_KEY }}
-             WHATSAPP_NUMBER: ${{ secrets.WHATSAPP_NUMBER }}
-           run: node send-fact.js
+         - name: Send WhatsApp Message
+           run: |
+             curl -X POST "https://api.callmebot.com/whatsapp.php" \
+               --data-urlencode "phone=${{ secrets.971508513968 }}" \                                                                                                                   --data-urlencode "text=🧪 Daily Chemistry Fact: Gold is the only naturally yellow metal! All other yellow metals are alloys. Gold's color comes from
+ relativistic effects on its electrons. ⚛️                                                                                                                                  relativistic effects on its electrons. ⚛️" \                                                                                                                               ```
+               --data-urlencode "apikey=${{ secrets.8601024 }}"
  ```
