@@ -1,0 +1,29 @@
+   name: Daily Chemistry Fact
+
+   on:
+     schedule:
+       # 9:00 AM Dubai time = 5:00 AM UTC
+       - cron: '0 5 * * *'
+     workflow_dispatch: # Allow manual trigger
+
+   jobs:
+     send-chemistry-fact:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Checkout repository
+           uses: actions/checkout@v4
+
+         - name: Set up Node.js
+           uses: actions/setup-node@v4
+           with:
+             node-version: '20'
+
+         - name: Install dependencies
+           run: npm install
+
+         - name: Send chemistry fact
+           env:
+             CALLMEBOT_API_KEY: ${{ secrets.CALLMEBOT_API_KEY }}
+             WHATSAPP_NUMBER: ${{ secrets.WHATSAPP_NUMBER }}
+           run: node send-fact.js
+ ```
