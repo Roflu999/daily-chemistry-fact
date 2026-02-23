@@ -80,7 +80,7 @@
 
      if (!apiKey || !phone) {
        console.error('❌ Missing environment variables:');
-       if (!apiKey) console.error('   - CALLMEBOT_API_KEY');
+       if (!apiKey) console.error('   - 8601024');
        if (!phone) console.error('   - 971508513968');
        process.exit(1);
      }
