@@ -1,0 +1,10 @@
+ ```json
+   {
+     "name": "daily-chemistry-fact",
+     "version": "1.0.0",
+     "description": "Daily chemistry fact WhatsApp bot",
+     "main": "send-fact.js",
+     "scripts": {
+       "start": "node send-fact.js"
+     }
+   }
